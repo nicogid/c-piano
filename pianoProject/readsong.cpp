@@ -142,3 +142,23 @@ ReadSong::~ReadSong(){
     delete m_read;
     delete m_stop;
 }
+
+void ReadSong::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_Escape) // si c'est echape on quitte
+        close();
+    if(event->key() == Qt::Key_A) // joue do
+        note_do();
+    if(event->key() == Qt::Key_Z) // joue re
+        note_re();
+    if(event->key() == Qt::Key_E) // joue mi
+        note_mi();
+    if(event->key() == Qt::Key_R) // joue fa
+        note_fa();
+    if(event->key() == Qt::Key_T) // joue sol
+        note_sol();
+    if(event->key() == Qt::Key_Y) // joue la
+        note_la();
+    if(event->key() == Qt::Key_U) // joue si
+        note_si();
+}

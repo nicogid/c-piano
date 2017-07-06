@@ -7,9 +7,12 @@
 #include <QUrl>
 #include <QMediaPlayer>
 #include <QApplication>
+#include <QKeyEvent>
 
 class ReadSong : public QWidget
 {
+    void keyPressEvent(QKeyEvent *event);
+
     Q_OBJECT
 public:
     ReadSong();
