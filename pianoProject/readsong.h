@@ -32,6 +32,9 @@ public slots:
     void note_sol();
     void note_la();
     void note_si();
+    void records();
+    void recordsSong();
+    void readSong();
 
 private:
     QPushButton* m_read;
@@ -46,6 +49,9 @@ private:
     QPushButton* m_sol;
     QPushButton* m_la;
     QPushButton* m_si;
+
+    QPushButton* m_readSong;
+    QPushButton* m_record;
 
     QMediaPlayer* player;
 };

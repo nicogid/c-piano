@@ -12,6 +12,9 @@
 #define A4 440 // LA
 #define B4 493 // SI
 
+boolean records_music = false;
+std::map<int,std::string> mapOfSong;
+int nbNote(0);
 
 ReadSong::ReadSong()
 {
@@ -29,12 +32,20 @@ ReadSong::ReadSong()
     m_pause = new QPushButton("pause",this);
     m_pause->setFont(QFont("Comic Sans MS"));
     m_pause->setCursor(Qt::PointingHandCursor);
+    m_record = new QPushButton("Enregistrer",this);
+    m_record->setFont(QFont("Comic Sans MS"));
+    m_record->setCursor(Qt::PointingHandCursor);
+    m_readSong = new QPushButton("Lire le morceau",this);
+    m_readSong->setFont(QFont("Comic Sans MS"));
+    m_readSong->setCursor(Qt::PointingHandCursor);
 
     QHBoxLayout *layoutH1 = new QHBoxLayout;
     layoutH1->addWidget(m_read);
     layoutH1->addWidget(m_play);
     layoutH1->addWidget(m_pause);
     layoutH1->addWidget(m_stop);
+    layoutH1->addWidget(m_record);
+    layoutH1->addWidget(m_readSong);
 
     m_do = new QPushButton("DO",this);
     m_do->setFont(QFont("Comic Sans MS"));
@@ -87,6 +98,9 @@ ReadSong::ReadSong()
     QObject::connect(m_sol,SIGNAL(clicked(bool)),this,SLOT(note_sol()));
     QObject::connect(m_la,SIGNAL(clicked(bool)),this,SLOT(note_la()));
     QObject::connect(m_si,SIGNAL(clicked(bool)),this,SLOT(note_si()));
+
+    QObject::connect(m_record,SIGNAL(clicked(bool)),this,SLOT(recordsSong()));
+    QObject::connect(m_readSong,SIGNAL(clicked(bool)),this,SLOT(readSong()));
 }
 
 void ReadSong::readMusic(){
@@ -110,31 +124,93 @@ void ReadSong::playMusic(){
 }
 
 void ReadSong::note_do(){
+    if(records_music)
+        mapOfSong.insert(std::make_pair(++nbNote,"do"));
     Beep(C4, 250);
 }
 
 void ReadSong::note_re(){
+    if(records_music)
+        mapOfSong.insert(std::make_pair(++nbNote,"re"));
     Beep(D4, 250);
 }
 
 void ReadSong::note_mi(){
+    if(records_music)
+        mapOfSong.insert(std::make_pair(++nbNote,"mi"));
     Beep(E4, 250);
 }
 
 void ReadSong::note_fa(){
+    if(records_music)
+        mapOfSong.insert(std::make_pair(++nbNote,"fa"));
     Beep(F4, 250);
 }
 
 void ReadSong::note_sol(){
+    if(records_music)
+        mapOfSong.insert(std::make_pair(++nbNote,"sol"));
     Beep(G4, 250);
 }
 
 void ReadSong::note_la(){
+    if(records_music)
+        mapOfSong.insert(std::make_pair(++nbNote,"la"));
     Beep(A4, 250);
 }
 
 void ReadSong::note_si(){
+    if(records_music)
+        mapOfSong.insert(std::make_pair(++nbNote,"si"));
     Beep(B4, 250);
+}
+
+// test fonction
+void ReadSong::records(){
+    records_music = true;
+    std::map<int,std::string> mapOfSong;
+    if(records_music){
+        mapOfSong.insert(std::make_pair(1,"do"));
+        mapOfSong.insert(std::make_pair(2,"re"));
+
+        std::map<int,std::string>::iterator it = mapOfSong.begin();
+        while(it != mapOfSong.end())
+        {
+            if(it->second.compare("do")==0)
+                note_do();
+            if(it->second.compare("re")==0)
+                note_re();
+        it++;
+        }
+    }
+}
+
+void ReadSong::recordsSong(){
+    records_music = true;
+}
+
+void ReadSong::readSong(){
+    records_music =false;
+    std::map<int,std::string>::iterator it = mapOfSong.begin();
+    while(it != mapOfSong.end())
+    {
+
+        if(it->second.compare("do")==0)
+            note_do();
+        if(it->second.compare("re")==0)
+            note_re();
+        if(it->second.compare("mi")==0)
+            note_mi();
+        if(it->second.compare("fa")==0)
+            note_fa();
+        if(it->second.compare("sol")==0)
+            note_sol();
+        if(it->second.compare("la")==0)
+            note_la();
+        if(it->second.compare("si")==0)
+            note_si();
+    it++;
+    }
 }
 
 ReadSong::~ReadSong(){
