@@ -1,7 +1,6 @@
 #include <QApplication>
 #include "readsong.h"
 #include "mainfenetre.h"
-#include "formulaire.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,9 +11,6 @@ int main(int argc, char *argv[])
     fenetre.show();
     //ReadSong readsong;
     //readsong.show();
-    //Formulaire formulaire;
-    //formulaire.show();
-
 
     return app.exec();
 };

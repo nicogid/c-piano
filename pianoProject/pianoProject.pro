@@ -1,7 +1,10 @@
 SOURCES += \
     main.cpp \
     readsong.cpp \
-    audioinput.cpp
+    fenetrereadsong.cpp \
+    mainfenetre.cpp \
+    formulaire.cpp \
+    fencodegenere.cpp
 
 QT += widgets
 
@@ -9,5 +12,8 @@ QT += multimedia
 
 HEADERS += \
     readsong.h \
-    audioinput.h
+    fenetrereadsong.h \
+    mainfenetre.h \
+    formulaire.h \
+    fencodegenere.h
 

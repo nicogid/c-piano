@@ -1,0 +1,30 @@
+#ifndef FENCODEGENERE_H
+#define FENCODEGENERE_H
+
+#include <QtWidgets>
+#include <QtGui>
+#include <QPushButton>
+#include <QTextEdit>
+#include <QString>
+
+class FenCodeGenere : public QWidget
+{
+    Q_OBJECT
+    public:
+    FenCodeGenere(QString &code);
+    void note_do();
+    void note_re();
+    void note_mi();
+    void note_fa();
+    void note_sol();
+    void note_la();
+    void note_si();
+    private:
+    QTextEdit *codeGenere;
+    QPushButton *fermer;
+    QPushButton *lire;
+    public slots:
+    void readsong(QString &code);
+};
+
+#endif // FENCODEGENERE_H

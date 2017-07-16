@@ -21,6 +21,7 @@ public:
 signals:
 
 public slots:
+    void test();
     void playMusic();
     void stopMusic();
     void pauseMusic();
@@ -52,6 +53,8 @@ private:
 
     QPushButton* m_readSong;
     QPushButton* m_record;
+
+    QPushButton* m_test;
 
     QMediaPlayer* player;
 };

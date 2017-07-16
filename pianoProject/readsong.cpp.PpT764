@@ -3,10 +3,6 @@
 #include <QString>
 #include <QBoxLayout>
 #include <windows.h>
-#include <QApplication>
-#include "fenetrereadsong.h"
-#include <map>
-
 
 #define C4 261 // DO
 #define D4 293 // RE
@@ -110,12 +106,7 @@ ReadSong::ReadSong()
 
     QObject::connect(m_record,SIGNAL(clicked(bool)),this,SLOT(recordsSong()));
     QObject::connect(m_readSong,SIGNAL(clicked(bool)),this,SLOT(readSong()));
-    QObject::connect(m_test,SIGNAL(clicked(bool)),this,SLOT(test()));
-
-}
-void ReadSong::test(){
-    FenetreReadSong *fenetre = new FenetreReadSong("test",mapOfSong);
-    fenetre->show();
+    QObject::connect(m_readSong,SIGNAL(clicked(bool)),this,SLOT(test()));
 
 }
 
